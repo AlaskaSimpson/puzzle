@@ -6,7 +6,7 @@ class Tile extends React.Component {
     render() {
       return (
         <button className="tile">
-          {/* TODO */}
+          {this.props.value}
         </button>
       );
     }
@@ -16,7 +16,6 @@ class EmptyTile extends React.Component {
     render() {
       return (
         <button className="emptytile">
-          {/* TODO */}
         </button>
       );
     }
@@ -24,7 +23,7 @@ class EmptyTile extends React.Component {
   
   class Board extends React.Component {
     renderTile(i) {
-      return <Tile />;
+      return <Tile value={i}/>;
     }
 
     renderEmptyTile(i) {

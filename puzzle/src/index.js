@@ -5,7 +5,8 @@ import './index.css';
 
 function Tile(props) {
       return (
-        <button className="tile" onClick={() => alert('click')}>
+        <button 
+        className="tile"  onClick={props.onClick()}>
           {props.value}
         </button>
       );
@@ -21,9 +22,32 @@ function Tile(props) {
     }
 
     getemptytile(){
-
         var emptytile = this.state.tiles.indexOf(null)
         return emptytile
+    }
+
+    getmoves(){
+       var emptytile = this.getemptytile()
+       var validmoves = []
+       var moves
+        if(emptytile%4 === 0){
+            moves = [(emptytile+1), (emptytile-4), (emptytile+4)]
+        } else if (emptytile%4 ===3){
+            moves = [(emptytile-1), (emptytile-4), (emptytile+4)]
+        } else {
+            moves = [(emptytile-1), (emptytile+1), (emptytile-4), (emptytile+4)]
+        }
+        
+        for (let move of moves) {
+            if (move >= 0 && move <= 15){
+                validmoves.push(move)
+            }           
+        }
+       return validmoves
+    }
+
+    handleClick(i){   
+        var moves = this.getmoves()
     }
 
     renderTile(i) {
@@ -37,7 +61,7 @@ function Tile(props) {
   
     render() {
       this.getemptytile()
-      const status = "Empty tile is at: " + this.getemptytile();
+      const status = "Empty tile is at: " + this.getemptytile() + " and moves are " + this.getmoves();
       return (
         <div>
           <div className="status">{status}</div>

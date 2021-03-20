@@ -25,7 +25,7 @@ class EmptyTile extends React.Component {
     constructor(props){
         super(props);
 
-        const tilenumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+        const tilenumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
         this.state = {
             tiles: tilenumbers.sort(() => Math.random() -0.5)
         };
@@ -34,7 +34,7 @@ class EmptyTile extends React.Component {
       return <Tile value={this.state.tiles[i]}/>;
     }
 
-    renderEmptyTile(i) {
+    renderEmptyTile() {
         return <EmptyTile />;
     }
   
@@ -47,25 +47,25 @@ class EmptyTile extends React.Component {
             {this.renderTile(0)}
             {this.renderTile(1)}
             {this.renderTile(2)}
-            {this.renderEmptyTile(3)}
+            {this.renderEmptyTile()}
           </div>
           <div className="board-row">
+            {this.renderTile(3)}
             {this.renderTile(4)}
             {this.renderTile(5)}
             {this.renderTile(6)}
-            {this.renderTile(7)}
           </div>
           <div className="board-row">
+            {this.renderTile(7)}
             {this.renderTile(8)}
             {this.renderTile(9)}
             {this.renderTile(10)}
-            {this.renderTile(11)}
           </div>
           <div className="board-row">
+            {this.renderTile(11)}
             {this.renderTile(12)}
             {this.renderTile(13)}
             {this.renderTile(14)}
-            {this.renderTile(15)}
           </div>
         </div>
       ); 

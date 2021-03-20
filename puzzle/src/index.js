@@ -2,21 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Tile extends React.Component {
-    render() {
-      return (
-        <button className="tile" onClick={() => alert(this.props.position)}>
-          {this.props.value}
-        </button>
-      );
-    }
-  }
-
 class EmptyTile extends React.Component {
     render() {
       return (
         <button className="emptytile">
             {this.props.value}
+        </button>
+      );
+    }
+  }
+
+class Tile extends React.Component {
+    render() {
+      return (
+        <button className="tile" onClick={() => alert(this.props.position)}>
+          {this.props.value}
         </button>
       );
     }

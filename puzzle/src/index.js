@@ -11,10 +11,24 @@ class Tile extends React.Component {
       );
     }
   }
+
+class EmptyTile extends React.Component {
+    render() {
+      return (
+        <button className="emptytile">
+          {/* TODO */}
+        </button>
+      );
+    }
+  }
   
   class Board extends React.Component {
     renderTile(i) {
       return <Tile />;
+    }
+
+    renderEmptyTile(i) {
+        return <EmptyTile />;
     }
   
     render() {
@@ -27,7 +41,7 @@ class Tile extends React.Component {
             {this.renderTile(0)}
             {this.renderTile(1)}
             {this.renderTile(2)}
-            {this.renderTile(3)}
+            {this.renderEmptyTile(3)}
           </div>
           <div className="board-row">
             {this.renderTile(4)}

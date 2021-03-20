@@ -5,7 +5,7 @@ import './index.css';
 class Tile extends React.Component {
     render() {
       return (
-        <button className="tile">
+        <button className="tile" onClick={() => alert(this.props.position)}>
           {this.props.value}
         </button>
       );
@@ -16,6 +16,7 @@ class EmptyTile extends React.Component {
     render() {
       return (
         <button className="emptytile">
+            {this.props.value}
         </button>
       );
     }
@@ -27,15 +28,20 @@ class EmptyTile extends React.Component {
 
         const tilenumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
         this.state = {
-            tiles: tilenumbers.sort(() => Math.random() -0.5)
+            tiles: tilenumbers.sort(() => Math.random() -0.5),
+            positions: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
         };
     }
     renderTile(i) {
-      return <Tile value={this.state.tiles[i]}/>;
+      return <Tile 
+      value={this.state.tiles[i]}
+      position = {this.state.positions[i]}
+      onClick={() => this.handleClick(i)}
+      />;
     }
 
     renderEmptyTile() {
-        return <EmptyTile />;
+        return <EmptyTile value={null}/>;
     }
   
     render() {

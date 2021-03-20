@@ -6,7 +6,7 @@ import './index.css';
 function Tile(props) {
       return (
         <button 
-        className="tile"  onClick={props.onClick()}>
+        className="tile"  onClick={props.onClick}>
           {props.value}
         </button>
       );
@@ -48,6 +48,12 @@ function Tile(props) {
 
     handleClick(i){   
         var moves = this.getmoves()
+        var IsTileValid = moves.includes(i)
+        if (IsTileValid){
+            alert('valid')
+        } else {
+            alert('invalid move')
+        }
     }
 
     renderTile(i) {

@@ -22,8 +22,16 @@ class EmptyTile extends React.Component {
   }
   
   class Board extends React.Component {
+    constructor(props){
+        super(props);
+
+        const tilenumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+        this.state = {
+            tiles: tilenumbers.sort(() => Math.random() -0.5)
+        };
+    }
     renderTile(i) {
-      return <Tile value={i}/>;
+      return <Tile value={this.state.tiles[i]}/>;
     }
 
     renderEmptyTile(i) {
@@ -31,8 +39,7 @@ class EmptyTile extends React.Component {
     }
   
     render() {
-      const status = 'Number of Moves: X';
-  
+      const status = "Number of Moves: X"
       return (
         <div>
           <div className="status">{status}</div>
@@ -61,7 +68,7 @@ class EmptyTile extends React.Component {
             {this.renderTile(15)}
           </div>
         </div>
-      );
+      ); 
     }
   }
   

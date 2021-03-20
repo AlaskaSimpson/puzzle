@@ -2,36 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class EmptyTile extends React.Component {
-    render() {
-      return (
-        <button className="emptytile">
-            {this.props.value}
-        </button>
-      );
-    }
-  }
 
-class Tile extends React.Component {
-    render() {
+function Tile(props) {
       return (
-        <button className="tile" onClick={() => alert(this.props.position)}>
-          {this.props.value}
+        <button className="tile" onClick={() => alert('click')}>
+          {props.value}
         </button>
       );
-    }
   }
   
   class Board extends React.Component {
     constructor(props){
         super(props);
-
-        const tilenumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
         this.state = {
-            tiles: tilenumbers.sort(() => Math.random() -0.5),
-            positions: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+            tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
+            positions: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
         };
     }
+
+    getemptytile(){
+
+        var emptytile = this.state.tiles.indexOf(null)
+        return emptytile
+    }
+
     renderTile(i) {
       return <Tile 
       value={this.state.tiles[i]}
@@ -40,12 +34,10 @@ class Tile extends React.Component {
       />;
     }
 
-    renderEmptyTile() {
-        return <EmptyTile value={null}/>;
-    }
   
     render() {
-      const status = "Number of Moves: X"
+      this.getemptytile()
+      const status = "Empty tile is at: " + this.getemptytile();
       return (
         <div>
           <div className="status">{status}</div>
@@ -53,25 +45,25 @@ class Tile extends React.Component {
             {this.renderTile(0)}
             {this.renderTile(1)}
             {this.renderTile(2)}
-            {this.renderEmptyTile()}
+            {this.renderTile(3)}
           </div>
           <div className="board-row">
-            {this.renderTile(3)}
             {this.renderTile(4)}
             {this.renderTile(5)}
             {this.renderTile(6)}
+            {this.renderTile(7)}
           </div>
           <div className="board-row">
-            {this.renderTile(7)}
             {this.renderTile(8)}
             {this.renderTile(9)}
             {this.renderTile(10)}
+            {this.renderTile(11)}
           </div>
           <div className="board-row">
-            {this.renderTile(11)}
             {this.renderTile(12)}
             {this.renderTile(13)}
             {this.renderTile(14)}
+            {this.renderTile(15)}
           </div>
         </div>
       ); 

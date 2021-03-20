@@ -1,0 +1,2 @@
+# puzzle
+mintbean hackathon prompt

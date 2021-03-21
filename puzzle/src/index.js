@@ -99,15 +99,18 @@ function Tile(props) {
   
     render() {
       let status;
+      let movesmade
       if (gameWon(this.state.correct)){
         status = "GAME WON";
       } else {
-        status = "Moves: " + this.state.numbermoves + " correct " + this.state.correct;
+        status = "Number of Tiles Correct " + this.state.correct;
+        movesmade = "Moves Made: " + this.state.numbermoves
       }
 
       return (
         <div>
           <div className="status">{status}</div>
+          <div className="movesmade">{movesmade}</div>
           <div className="board-row">
             {this.renderTile(0)}
             {this.renderTile(1)}

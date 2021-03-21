@@ -110,7 +110,7 @@ function Tile(props) {
       return (
         <div>
           <div className="status">{status}</div>
-          <div className="movesmade">{movesmade}</div>
+          <div className="status">{movesmade}</div>
           <div className="board-row">
             {this.renderTile(0)}
             {this.renderTile(1)}

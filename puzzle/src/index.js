@@ -61,7 +61,6 @@ function Tile(props) {
         var IsTileValid = moves.includes(i)
         if (IsTileValid){
             this.swaptiles(i,this.getemptytile())
-            alert('valid' + this.state.tiles)
         } else {
             alert('invalid move')
         }

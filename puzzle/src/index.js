@@ -46,11 +46,22 @@ function Tile(props) {
        return validmoves
     }
 
+    swaptiles(tile1, tile2){
+      var values = this.state.tiles.slice();
+      var tile1value = values[tile1]
+      values[tile1] = values[tile2]
+      values[tile2] = tile1value    
+      this.setState({
+          tiles : values 
+        })  
+    }
+
     handleClick(i){   
         var moves = this.getmoves()
         var IsTileValid = moves.includes(i)
         if (IsTileValid){
-            alert('valid')
+            this.swaptiles(i,this.getemptytile())
+            alert('valid' + this.state.tiles)
         } else {
             alert('invalid move')
         }

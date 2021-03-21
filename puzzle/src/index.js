@@ -81,7 +81,14 @@ function Tile(props) {
 
   
     render() {
-      const status = "Empty tile is at: " + this.getemptytile() + " and moves are " + this.getmoves();
+      const won = gameWon(this.state.tiles)
+      let status;
+      if (won){
+        status = "GAME WON";
+      } else {
+        status = "Moves: " + this.state.numbermoves;
+      }
+
       return (
         <div>
           <div className="status">{status}</div>

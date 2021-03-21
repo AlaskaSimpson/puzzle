@@ -53,38 +53,39 @@ function Tile(props) {
       var tile1value = values[tile1]
       values[tile1] = values[tile2]
       values[tile2] = tile1value    
+      
       this.setState({
-          tiles : values 
+          tiles : values, 
+          correct: this.getnumbercorrect(values)
         })  
     }
 
-    getnumbercorrect(){
+    getnumbercorrect(gamestate){
       const complete =[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null];
       var correcttiles = []
       for (let i=0; i < complete.length; i++){
-        if(this.state.tiles[i] === complete[i]){
+        if(gamestate[i] === complete[i]){
           correcttiles.push(correcttiles[i])
         }
       }
-      this.setState({
-        correct : correcttiles.length
-      })
-
+      return correcttiles.length
     }
 
     handleClick(i){   
-        var moves = this.getmoves()
-        var IsTileValid = moves.includes(i)
-        var movenumber = this.state.numbermoves + 1
-        if (IsTileValid){
-            this.setState({
-              numbermoves: movenumber
-            })
-            this.getnumbercorrect()
-            this.swaptiles(i,this.getemptytile())
-        } else {
-            alert('invalid move')
-        }
+      if (gameWon(this.state.correct)){
+        return;
+      }
+      var moves = this.getmoves()
+      var IsTileValid = moves.includes(i)
+      var movenumber = this.state.numbermoves + 1
+      if (IsTileValid){
+        this.setState({
+          numbermoves: movenumber
+        })
+        this.swaptiles(i,this.getemptytile())
+      } else {
+        alert('invalid move')
+      }
     }
 
     renderTile(i) {
@@ -98,7 +99,7 @@ function Tile(props) {
   
     render() {
       let status;
-      if (gameWon(this.state.tiles)===16){
+      if (gameWon(this.state.correct)){
         status = "GAME WON";
       } else {
         status = "Moves: " + this.state.numbermoves + " correct " + this.state.correct;
@@ -152,9 +153,12 @@ function Tile(props) {
     }
   }
   
-
-function gameWon(tiles){
-  return false;
+  function gameWon(tilescorrect){
+    if (tilescorrect === 16){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   // ========================================

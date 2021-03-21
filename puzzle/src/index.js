@@ -127,12 +127,12 @@ function Tile(props) {
   }
   
 
-function calculateWinner(tiles){
+function gameWon(tiles){
   const complete = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null];
   if (tiles == complete){
-    return "You have won"
+    return true
   }
-  return null
+  return false
 }
 
   // ========================================

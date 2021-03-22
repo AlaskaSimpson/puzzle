@@ -108,7 +108,7 @@ function Tile(props) {
 
     NewGame(){
         this.setState(
-            {tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
+            {tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
             numbermoves: 0,
             correct: 0
             })

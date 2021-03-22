@@ -83,9 +83,7 @@ function Tile(props) {
           numbermoves: movenumber
         })
         this.swaptiles(i,this.getemptytile())
-      } else {
-        alert('invalid move')
-      }
+      } 
     }
 
     renderTile(i) {

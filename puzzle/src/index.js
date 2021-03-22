@@ -96,18 +96,18 @@ function Tile(props) {
 
   
     render() {
-      let status;
+      let completed;
       let movesmade
       if (gameWon(this.state.correct)){
-        status = "GAME WON";
+        completed = "GAME WON";
       } else {
-        status = "Number of Tiles Correct: " + this.state.correct;
+        completed = "Number of Tiles Correct: " + this.state.correct;
         movesmade = "Moves Made: " + this.state.numbermoves
       }
 
       return (
         <div>
-          <div className="status">{status}</div>
+          <div className="status">{completed}</div>
           <div className="status">{movesmade}</div>
           <div className = "board">
           <div className="board-row">
@@ -141,40 +141,16 @@ function Tile(props) {
   }
   
   class Game extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            maintainboard: true,
-        };
-    }
 
-    renderboard(){
-        return (<Board />);   
-    }
     render(){
-        const board = this.renderboard()
         return(
             <div className="game">
             <div className="game-board">
-                {board}
-            </div>
-            <div className="game-info">
+            <Board />
             </div>
             </div>
             );
         }
-
-/*     render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-          </div>
-        </div>
-      );
-    } */
   }
   
   function gameWon(tilescorrect){
@@ -184,8 +160,6 @@ function Tile(props) {
       return false;
     }
   }
-
- 
 
   // ========================================
   

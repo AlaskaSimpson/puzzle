@@ -1,17 +1,20 @@
 body {
     font: 14px "Century Gothic", Futura, sans-serif;
-    margin: 20px;
+    margin:20px
   }
   
   ol, ul {
     padding-left: 30px;
+  }
+
+  .game-board{
+    margin: auto;
   }
   
   .board-row:after {
     clear: both;
     content: "";
     display: table;
-
   }
 
   .board {

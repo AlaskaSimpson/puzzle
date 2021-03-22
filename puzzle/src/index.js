@@ -141,19 +141,40 @@ function Tile(props) {
   }
   
   class Game extends React.Component {
-    render() {
+    constructor(props){
+        super(props);
+        this.state = {
+            maintainboard: true,
+        };
+    }
+
+    renderboard(){
+        return (<Board />);   
+    }
+    render(){
+        const board = this.renderboard()
+        return(
+            <div className="game">
+            <div className="game-board">
+                {board}
+            </div>
+            <div className="game-info">
+            </div>
+            </div>
+            );
+        }
+
+/*     render() {
       return (
         <div className="game">
           <div className="game-board">
             <Board />
           </div>
           <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
           </div>
         </div>
       );
-    }
+    } */
   }
   
   function gameWon(tilescorrect){
@@ -163,6 +184,8 @@ function Tile(props) {
       return false;
     }
   }
+
+ 
 
   // ========================================
   

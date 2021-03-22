@@ -111,6 +111,7 @@ function Tile(props) {
         <div>
           <div className="status">{status}</div>
           <div className="status">{movesmade}</div>
+          <div className = "board">
           <div className="board-row">
             {this.renderTile(0)}
             {this.renderTile(1)}
@@ -134,6 +135,7 @@ function Tile(props) {
             {this.renderTile(13)}
             {this.renderTile(14)}
             {this.renderTile(15)}
+          </div>
           </div>
         </div>
       ); 

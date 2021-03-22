@@ -17,7 +17,6 @@ function Tile(props) {
         super(props);
         this.state = {
             tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
-            positions: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
             numbermoves: 0,
             correct: 0
         };
@@ -87,9 +86,10 @@ function Tile(props) {
     }
 
     renderTile(i) {
+      const positions = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
       return <Tile 
       value={this.state.tiles[i]}
-      position = {this.state.positions[i]}
+      position = {positions[i]}
       onClick={() => this.handleClick(i)}
       />;
     }

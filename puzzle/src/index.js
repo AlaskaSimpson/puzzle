@@ -180,31 +180,41 @@ function Tile(props) {
   }
 
   function shuffle(){
-    const issolvable = false;
-    while (issolvable === false){
-        let emptytilerow = 1;
-        let potential = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5);
-        let emptytilepostion = potential.indexOf(null);
-        while (emptytilepostion-4 >=0){
+    var isSolvable = false;
+    while(isSolvable === false){
+        var positions = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5)
+        var emptytilerow = 0
+        var numberofinversions = 0
+
+        var emptytileindex = positions.indexOf(null)
+        while (emptytileindex >= 0){
             emptytilerow = emptytilerow + 1
-            emptytilepostion = emptytilepostion-4
+            emptytileindex = emptytileindex -4
         }
-        potential = potential.filter(item => item != null)
-        let numberinversion = 0
+
+        var justnumbers = positions.filter(item => item !== null)
         let number
-        for (number in potential){
-            let index = potential.indexOf(number)
-            let i
-            for (i=(index+1); i < potential.length; i++){
-                if (number > potential[i]){
-                    numberinversion = numberinversion + 1
-                }
-            }
+        for (number in justnumbers){
+            numberofinversions = numberofinversions + inversions(number,justnumbers)
         }
-        if (numberinversion+emptytilerow % 2 === 0){
-            issolvable = true
+
+        if ((numberofinversions + emptytilerow) % 2 === 0){
+            isSolvable = true
         }
     }
+    return positions
+  }
+
+  function inversions(element,list){
+      var elementindex = list.indexOf(element)
+      var inversions = 0
+      let index
+      for (index=(elementindex+1); index < list.length; index++){
+        if (element > list[index]){
+            inversions = inversions + 1
+        }
+      }
+      return inversions
   }
 
   // ========================================

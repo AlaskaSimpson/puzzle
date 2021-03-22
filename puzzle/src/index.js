@@ -155,10 +155,10 @@ function Tile(props) {
             {this.renderRow(3)}
           </div>
           <div className = "options">
-          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button>
-          <button className="difficulty" onClick={()=> this.setdifficulty(2)}>Easy</button>
-          <button className="difficulty" onClick={()=> this.setdifficulty(1)}>Medium</button>
-          <button className="difficulty" onClick={()=> this.setdifficulty(0)}>Hard</button>
+          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button><br></br>
+          <button className="setting" onClick={()=> this.setdifficulty(2)}>Easy</button>
+          <button className="setting" onClick={()=> this.setdifficulty(1)}>Medium</button>
+          <button className="setting" onClick={()=> this.setdifficulty(0)}>Hard</button>
           </div>
         </div>
       ); 

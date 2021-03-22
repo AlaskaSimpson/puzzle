@@ -131,22 +131,25 @@ function Tile(props) {
       let completed;
       let movesmade;
       let movesleft;
-      let maxmovesallowed
+      let maxmovesallowed;
+      let gameover = false;
       if (gameWon(this.state.correct)){
         completed = "GAME WON: in " + this.state.numbermoves + " moves";
         movesleft = null;
         maxmovesallowed = null;
+        gameover = true;
       } else if(!(movesRemaing(this.state.numbermoves, this.state.maxmoves))){
         completed = "GAME OVER: no more moves";
+        gameover=true;
       } else{
         completed = "Number of Tiles Correct: " + this.state.correct;
         movesmade = "Moves Made: " + this.state.numbermoves;
       }
 
-      if ((this.state.maxmoves-this.state.numbermoves) < 30 && !gameWon(this.state.correct)){
+      if ((this.state.maxmoves-this.state.numbermoves) < 30 && !gameover){
           maxmovesallowed = null;
           movesleft = "Moves Remaining: " + (this.state.maxmoves-this.state.numbermoves);
-      } else if (!gameWon(this.state.correct)){
+      } else if (!gameover){
           movesleft = null;
           maxmovesallowed = "Maximum Moves: " + this.state.maxmoves;
       }

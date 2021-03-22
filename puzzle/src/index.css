@@ -10,7 +10,7 @@ body {
 
   .game-board{
     margin: auto;
-    margin-top: 12px;
+    margin-top: 30px;
   }
   
   .board-row:after {
@@ -20,6 +20,7 @@ body {
   }
 
   .board {
+    margin-top: 40px;
     display: table;
     border: 5px solid rgb(4, 0, 255);
   }

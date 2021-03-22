@@ -143,7 +143,7 @@ function Tile(props) {
         movesmade = "Moves Made: " + this.state.numbermoves;
       }
 
-      if ((this.state.maxmoves-this.state.numbermoves) < 30 && (this.state.maxmoves-this.state.numbermoves) > 0){
+      if ((this.state.maxmoves-this.state.numbermoves) < 30 && !gameWon(this.state.correct)){
           maxmovesallowed = null;
           movesleft = "Moves Remaining: " + (this.state.maxmoves-this.state.numbermoves);
       } else if (!gameWon(this.state.correct)){

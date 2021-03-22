@@ -16,8 +16,7 @@ function Tile(props) {
     constructor(props){
         super(props);
         this.state = {
-            tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
-            positions: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+            tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
             numbermoves: 0,
             correct: 0
         };
@@ -72,7 +71,7 @@ function Tile(props) {
     }
 
     handleClick(i){   
-      if (gameWon(this.state.correct)){
+      if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves))){
         return;
       }
       var moves = this.getmoves()
@@ -87,53 +86,64 @@ function Tile(props) {
     }
 
     renderTile(i) {
+      const positions = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
       return <Tile 
       value={this.state.tiles[i]}
-      position = {this.state.positions[i]}
+      position = {positions[i]}
       onClick={() => this.handleClick(i)}
       />;
     }
 
+    renderRow(i){
+        var lefttilenumber = i*4;
+        return(
+        <div className="board-row">
+        {this.renderTile(lefttilenumber)}
+        {this.renderTile(lefttilenumber+1)}
+        {this.renderTile(lefttilenumber+2)}
+        {this.renderTile(lefttilenumber+3)}
+        </div>
+        )
+    }
+
+    NewGame(){
+        this.setState(
+            {tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
+            numbermoves: 0,
+            correct: 0
+            })
+    }
   
     render() {
-      let status;
-      let movesmade
+      let completed;
+      let movesmade;
       if (gameWon(this.state.correct)){
-        status = "GAME WON";
-      } else {
-        status = "Number of Tiles Correct: " + this.state.correct;
-        movesmade = "Moves Made: " + this.state.numbermoves
+        completed = "GAME WON";
+      } else if(!(movesRemaing(this.state.numbermoves))){
+        completed = "GAME OVER: no more moves";
+      } else{
+        completed = "Number of Tiles Correct: " + this.state.correct;
+        movesmade = "Moves Made: " + this.state.numbermoves;
+      }
+
+      let movesleft;
+      if ((300-this.state.numbermoves) < 30){
+          movesleft = "Moves Remaining: " + (300-this.state.numbermoves);
       }
 
       return (
         <div>
-          <div className="status">{status}</div>
+          <div className="status">{completed}</div>
           <div className="status">{movesmade}</div>
+          <div className="status low-moves">{movesleft}</div>
           <div className = "board">
-          <div className="board-row">
-            {this.renderTile(0)}
-            {this.renderTile(1)}
-            {this.renderTile(2)}
-            {this.renderTile(3)}
+            {this.renderRow(0)}
+            {this.renderRow(1)}
+            {this.renderRow(2)}
+            {this.renderRow(3)}
           </div>
-          <div className="board-row">
-            {this.renderTile(4)}
-            {this.renderTile(5)}
-            {this.renderTile(6)}
-            {this.renderTile(7)}
-          </div>
-          <div className="board-row">
-            {this.renderTile(8)}
-            {this.renderTile(9)}
-            {this.renderTile(10)}
-            {this.renderTile(11)}
-          </div>
-          <div className="board-row">
-            {this.renderTile(12)}
-            {this.renderTile(13)}
-            {this.renderTile(14)}
-            {this.renderTile(15)}
-          </div>
+          <div className = "options">
+          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button>
           </div>
         </div>
       ); 
@@ -141,19 +151,16 @@ function Tile(props) {
   }
   
   class Game extends React.Component {
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
+
+    render(){
+        return(
+            <div className="game">
+            <div className="game-board">
             <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
-    }
+            </div>
+            </div>
+            );
+        }
   }
   
   function gameWon(tilescorrect){
@@ -162,6 +169,52 @@ function Tile(props) {
     } else {
       return false;
     }
+  }
+
+  function movesRemaing(movesmade){
+      if (movesmade <= 300){
+          return true;
+      } else {
+          return false;
+      }
+  }
+
+  function shuffle(){
+    var isSolvable = false;
+    while(isSolvable === false){
+        var positions = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5)
+        var emptytilerow = 0
+        var numberofinversions = 0
+
+        var emptytileindex = positions.indexOf(null)
+        while (emptytileindex >= 0){
+            emptytilerow = emptytilerow + 1
+            emptytileindex = emptytileindex -4
+        }
+
+        var justnumbers = positions.filter(item => item !== null)
+        let number
+        for (number in justnumbers){
+            numberofinversions = numberofinversions + inversions(number,justnumbers)
+        }
+
+        if ((numberofinversions + emptytilerow) % 2 === 0){
+            isSolvable = true
+        }
+    }
+    return positions
+  }
+
+  function inversions(element,list){
+      var elementindex = list.indexOf(element)
+      var inversions = 0
+      let index
+      for (index=(elementindex+1); index < list.length; index++){
+        if (element > list[index]){
+            inversions = inversions + 1
+        }
+      }
+      return inversions
   }
 
   // ========================================

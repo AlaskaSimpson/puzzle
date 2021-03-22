@@ -24,7 +24,9 @@ function Tile(props) {
     }
 
     setdifficulty(i){
-        if (i === 0){
+        if (this.state.numbermoves >0){
+            alert('Start a New Game to Change Difficulty')
+        } else if (i === 0){
             this.setState({maxmoves: 100})
         } else if (i === 1){
             this.setState({maxmoves: 200})

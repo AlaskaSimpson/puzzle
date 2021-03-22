@@ -5,9 +5,9 @@ A take on the traditional 15 tile puzzle. Consiting of 15 numbered tiles to arra
 
 ## Usage
 1. Download or clone this project
-2. 'npm run build'
-3. 'npm install -g serve'
-4. 'serve -s build'
+2. `npm run build`
+3. `npm install -g serve`
+4. `serve -s build`
 5. Visit [localhost:5000](http://localhost:5000)
 
 

@@ -103,7 +103,7 @@ function Tile(props) {
       if (gameWon(this.state.correct)){
         status = "GAME WON";
       } else {
-        status = "Number of Tiles Correct " + this.state.correct;
+        status = "Number of Tiles Correct: " + this.state.correct;
         movesmade = "Moves Made: " + this.state.numbermoves
       }
 

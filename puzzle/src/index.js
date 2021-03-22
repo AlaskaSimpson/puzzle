@@ -94,6 +94,18 @@ function Tile(props) {
       />;
     }
 
+    renderRow(i){
+        var lefttilenumber = i*4;
+        return(
+        <div className="board-row">
+        {this.renderTile(lefttilenumber)}
+        {this.renderTile(lefttilenumber+1)}
+        {this.renderTile(lefttilenumber+2)}
+        {this.renderTile(lefttilenumber+3)}
+        </div>
+        )
+    }
+
     NewGame(){
         this.setState(
             {tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
@@ -117,30 +129,10 @@ function Tile(props) {
           <div className="status">{completed}</div>
           <div className="status">{movesmade}</div>
           <div className = "board">
-          <div className="board-row">
-            {this.renderTile(0)}
-            {this.renderTile(1)}
-            {this.renderTile(2)}
-            {this.renderTile(3)}
-          </div>
-          <div className="board-row">
-            {this.renderTile(4)}
-            {this.renderTile(5)}
-            {this.renderTile(6)}
-            {this.renderTile(7)}
-          </div>
-          <div className="board-row">
-            {this.renderTile(8)}
-            {this.renderTile(9)}
-            {this.renderTile(10)}
-            {this.renderTile(11)}
-          </div>
-          <div className="board-row">
-            {this.renderTile(12)}
-            {this.renderTile(13)}
-            {this.renderTile(14)}
-            {this.renderTile(15)}
-          </div>
+            {this.renderRow(0)}
+            {this.renderRow(1)}
+            {this.renderRow(2)}
+            {this.renderRow(3)}
           </div>
           <div className = "options">
           <button className="new-game" onClick={()=> this.NewGame()}>New Game</button>

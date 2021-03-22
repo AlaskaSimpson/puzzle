@@ -4,10 +4,10 @@ import './index.css';
 
 
 function Tile(props) {
+      const tilevalue = "tile tilenumber" + props.value
       return (
         <button 
-        className="tile"  onClick={props.onClick}>
-          {props.value}
+        className={tilevalue} onClick={props.onClick}>
         </button>
       );
   }

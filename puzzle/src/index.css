@@ -50,3 +50,77 @@ body {
     margin-left: 20px;
   }
 
+  .tilenumber1{
+    background-size: contain;
+    background-image: url(./numbers/1.png);
+  }
+
+  .tilenumber2{
+    background-size: contain;
+    background-image: url(./numbers/2.png);
+  }
+
+  .tilenumber3{
+    background-size: contain;
+    background-image: url(./numbers/3.png);
+  }
+
+  .tilenumber4{
+    background-size: contain;
+    background-image: url(./numbers/4.png);
+  }
+
+  .tilenumber5{
+    background-size: contain;
+    background-image: url(./numbers/5.png);
+  }
+
+  .tilenumber6{
+    background-size: contain;
+    background-image: url(./numbers/6.png);
+  }
+
+  .tilenumber7{
+    background-size: contain;
+    background-image: url(./numbers/7.png);
+  }
+
+  .tilenumber8{
+    background-size: contain;
+    background-image: url(./numbers/8.png);
+  }
+
+  .tilenumber9{
+    background-size: contain;
+    background-image: url(./numbers/9.png);
+  }
+
+  .tilenumber10{
+    background-size: contain;
+    background-image: url(./numbers/10.png);
+  }
+
+  .tilenumber11{
+    background-size: contain;
+    background-image: url(./numbers/11.png);
+  }
+
+  .tilenumber12{
+    background-size: contain;
+    background-image: url(./numbers/12.png);
+  }
+
+  .tilenumber13{
+    background-size: contain;
+    background-image: url(./numbers/13.png);
+  }
+
+  .tilenumber14{
+    background-size: contain;
+    background-image: url(./numbers/14.png);
+  }
+
+  .tilenumber15{
+    background-size: contain;
+    background-image: url(./numbers/15.png);
+  }

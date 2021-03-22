@@ -16,7 +16,7 @@ function Tile(props) {
     constructor(props){
         super(props);
         this.state = {
-            tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
+            tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
             numbermoves: 0,
             correct: 0
         };
@@ -178,6 +178,35 @@ function Tile(props) {
           return false;
       }
   }
+
+  function shuffle(){
+    const issolvable = false;
+    while (issolvable === false){
+        let emptytilerow = 1;
+        let potential = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5);
+        let emptytilepostion = potential.indexOf(null);
+        while (emptytilepostion-4 >=0){
+            emptytilerow = emptytilerow + 1
+            emptytilepostion = emptytilepostion-4
+        }
+        potential = potential.filter(item => item != null)
+        let numberinversion = 0
+        let number
+        for (number in potential){
+            let index = potential.indexOf(number)
+            let i
+            for (i=(index+1); i < potential.length; i++){
+                if (number > potential[i]){
+                    numberinversion = numberinversion + 1
+                }
+            }
+        }
+        if (numberinversion+emptytilerow % 2 === 0){
+            issolvable = true
+        }
+    }
+  }
+
   // ========================================
   
   ReactDOM.render(

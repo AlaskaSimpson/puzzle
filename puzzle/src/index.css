@@ -32,6 +32,10 @@ body {
     font-weight: bold;
   }
 
+  .low-moves{
+    color:rgb(241, 4, 4);
+  }
+
   .options{
     margin-top: 20px;
     

@@ -71,7 +71,7 @@ function Tile(props) {
     }
 
     handleClick(i){   
-      if (gameWon(this.state.correct)){
+      if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves))){
         return;
       }
       var moves = this.getmoves()
@@ -116,18 +116,26 @@ function Tile(props) {
   
     render() {
       let completed;
-      let movesmade
+      let movesmade;
       if (gameWon(this.state.correct)){
         completed = "GAME WON";
-      } else {
+      } else if(!(movesRemaing(this.state.numbermoves))){
+        completed = "GAME OVER: no more moves";
+      } else{
         completed = "Number of Tiles Correct: " + this.state.correct;
-        movesmade = "Moves Made: " + this.state.numbermoves
+        movesmade = "Moves Made: " + this.state.numbermoves;
+      }
+
+      let movesleft;
+      if ((300-this.state.numbermoves) < 30){
+          movesleft = "Moves Remaining: " + (300-this.state.numbermoves);
       }
 
       return (
         <div>
           <div className="status">{completed}</div>
           <div className="status">{movesmade}</div>
+          <div className="status low-moves">{movesleft}</div>
           <div className = "board">
             {this.renderRow(0)}
             {this.renderRow(1)}
@@ -163,6 +171,13 @@ function Tile(props) {
     }
   }
 
+  function movesRemaing(movesmade){
+      if (movesmade <= 300){
+          return true;
+      } else {
+          return false;
+      }
+  }
   // ========================================
   
   ReactDOM.render(

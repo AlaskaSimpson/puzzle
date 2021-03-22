@@ -94,6 +94,13 @@ function Tile(props) {
       />;
     }
 
+    NewGame(){
+        this.setState(
+            {tiles: [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5),
+            numbermoves: 0,
+            correct: 0
+            })
+    }
   
     render() {
       let completed;
@@ -135,6 +142,7 @@ function Tile(props) {
             {this.renderTile(15)}
           </div>
           </div>
+          <button className="options" onClick={()=> this.NewGame()}>New Game</button>
         </div>
       ); 
     }

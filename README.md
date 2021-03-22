@@ -1,5 +1,8 @@
-# 15 title puzzle
-project created for the mintbean hackathon (19th March 2021 - 25th March)
+# 15 Tile Puzzle
+
+## Description
+A take on the traditional 15 tile puzzle. Consiting of 15 numbered tiles to arrange in the grid instead of unjumbling a picture. Built as part of Mintbean Hackathon #083.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

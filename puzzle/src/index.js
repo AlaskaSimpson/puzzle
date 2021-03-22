@@ -142,7 +142,9 @@ function Tile(props) {
             {this.renderTile(15)}
           </div>
           </div>
-          <button className="options" onClick={()=> this.NewGame()}>New Game</button>
+          <div className = "options">
+          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button>
+          </div>
         </div>
       ); 
     }

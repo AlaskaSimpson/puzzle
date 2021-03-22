@@ -18,8 +18,21 @@ function Tile(props) {
         this.state = {
             tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
             numbermoves: 0,
+            maxmoves: 300,
             correct: 0
         };
+    }
+
+    setdifficulty(i){
+        if (this.state.numbermoves >0){
+            alert('Start a New Game to Change Difficulty')
+        } else if (i === 0){
+            this.setState({maxmoves: 100})
+        } else if (i === 1){
+            this.setState({maxmoves: 200})
+        } else {
+            this.setState({maxmoves: 300})
+        }
     }
 
     getemptytile(){
@@ -71,7 +84,7 @@ function Tile(props) {
     }
 
     handleClick(i){   
-      if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves))){
+      if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves, this.state.maxmoves))){
         return;
       }
       var moves = this.getmoves()
@@ -119,7 +132,8 @@ function Tile(props) {
       let movesmade;
       if (gameWon(this.state.correct)){
         completed = "GAME WON";
-      } else if(!(movesRemaing(this.state.numbermoves))){
+        movesleft = null;
+      } else if(!(movesRemaing(this.state.numbermoves, this.state.maxmoves))){
         completed = "GAME OVER: no more moves";
       } else{
         completed = "Number of Tiles Correct: " + this.state.correct;
@@ -127,14 +141,20 @@ function Tile(props) {
       }
 
       let movesleft;
-      if ((300-this.state.numbermoves) < 30){
-          movesleft = "Moves Remaining: " + (300-this.state.numbermoves);
+      let maxmovesallowed
+      if ((this.state.maxmoves-this.state.numbermoves) < 30){
+          maxmovesallowed = null;
+          movesleft = "Moves Remaining: " + (this.state.maxmoves-this.state.numbermoves);
+      } else {
+          movesleft = null;
+          maxmovesallowed = "Maximum Moves: " + this.state.maxmoves;
       }
 
       return (
         <div>
           <div className="status">{completed}</div>
           <div className="status">{movesmade}</div>
+          <div className="status">{maxmovesallowed}</div>
           <div className="status low-moves">{movesleft}</div>
           <div className = "board">
             {this.renderRow(0)}
@@ -143,13 +163,16 @@ function Tile(props) {
             {this.renderRow(3)}
           </div>
           <div className = "options">
-          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button>
+          <button className="new-game" onClick={()=> this.NewGame()}>New Game</button><br></br>
+          <button className="setting" onClick={()=> this.setdifficulty(2)}>Easy</button>
+          <button className="setting" onClick={()=> this.setdifficulty(1)}>Medium</button>
+          <button className="setting" onClick={()=> this.setdifficulty(0)}>Hard</button>
           </div>
         </div>
       ); 
     }
   }
-  
+
   class Game extends React.Component {
 
     render(){
@@ -171,8 +194,8 @@ function Tile(props) {
     }
   }
 
-  function movesRemaing(movesmade){
-      if (movesmade <= 300){
+  function movesRemaing(movesmade, maxmoves){
+      if (movesmade <= maxmoves){
           return true;
       } else {
           return false;

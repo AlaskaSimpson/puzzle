@@ -43,6 +43,16 @@ body {
 
   .new-game{
     font-size: 20px;
+    margin-left: 10px;
+    border-radius: 12px;
+    background: #fff;
+    border: 0px solid rgb(36, 35, 35);
+  }
+
+  .setting{
+    margin-top: 20px;
+    font-size: 20px;
+    margin-left: 10px;
     border-radius: 12px;
     background: #fff;
     border: 0px solid rgb(36, 35, 35);

@@ -133,7 +133,7 @@ function Tile(props) {
       let movesleft;
       let maxmovesallowed
       if (gameWon(this.state.correct)){
-        completed = "GAME WON";
+        completed = "GAME WON: in " + this.state.numbermoves + " moves";
         movesleft = null;
         maxmovesallowed = null;
       } else if(!(movesRemaing(this.state.numbermoves, this.state.maxmoves))){

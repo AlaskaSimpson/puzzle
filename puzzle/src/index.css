@@ -33,7 +33,11 @@ body {
     margin: auto;
     margin-top: 30px;
   }
-
+@media only screen and (max-width: 600px){
+  .info-box{
+    visibility: hidden;
+  }
+}
 
 @media only screen and (min-width: 700px){
 /* when not mobile */

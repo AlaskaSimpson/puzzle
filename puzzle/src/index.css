@@ -111,6 +111,10 @@ body {
     width: auto;
     margin: auto;
   }
+
+  .board {
+    margin: auto;
+  }
 }
   
   .tile {

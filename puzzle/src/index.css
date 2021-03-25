@@ -56,6 +56,9 @@ body {
   .info-box{
     visibility: hidden;
   }
+  .game-info{
+    visibility: hidden;
+  }
 }
   
   .board-row:after {

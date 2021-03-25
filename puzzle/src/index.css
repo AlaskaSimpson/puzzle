@@ -27,21 +27,13 @@ body {
     background: #9CECFF;
     border: 0px solid rgb(36, 35, 35);
     color:rgb(7, 7, 7);
-    height: 100%;
-    width: 90%;
   }
   
   .game-board{
-    width: 90%;
     margin: auto;
     margin-top: 30px;
   }
 
-  .game:after{
-    content: "";
-    display: table;
-    clear:both;
-  }
 
 @media only screen and (min-width: 600px){
 /* when not mobile */

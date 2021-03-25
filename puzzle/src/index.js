@@ -181,11 +181,25 @@ function Tile(props) {
 
     render(){
         return(
+          <body>
+            <div className = "game-title">
+            <h1>15 Tile Puzzle</h1>
+            </div>
             <div className="game">
-            <div className="game-board">
+            <div className="column game-info">
+              <div className = "info-box">
+              <h2>How to Play</h2>
+              <p> The aim of the game is to rearrange the tiles into numerical order, with the empty space on the bottom right</p>
+              <p> Click on a tile to move it. It is only possible to move tiles that are next to the empty space</p>
+              <p> Too easy? Select a difficulty to reduce the number of moves you have to solve the puzzle</p>
+              <p> Use the New Game button, to get a freshly shuffled board</p>
+              </div>
+            </div>
+            <div className="column game-board">
             <Board />
             </div>
             </div>
+          </body>
             );
         }
   }

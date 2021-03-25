@@ -16,7 +16,7 @@ function Tile(props) {
     constructor(props){
         super(props);
         this.state = {
-            tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
+            tiles: shuffletiles(),
             numbermoves: 0,
             maxmoves: 300,
             correct: 0
@@ -38,26 +38,6 @@ function Tile(props) {
     getemptytile(){
         var emptytile = this.state.tiles.indexOf(null)
         return emptytile
-    }
-
-    getmoves(){
-       var emptytile = this.getemptytile()
-       var validmoves = []
-       var moves
-        if(emptytile%4 === 0){
-            moves = [(emptytile+1), (emptytile-4), (emptytile+4)]
-        } else if (emptytile%4 ===3){
-            moves = [(emptytile-1), (emptytile-4), (emptytile+4)]
-        } else {
-            moves = [(emptytile-1), (emptytile+1), (emptytile-4), (emptytile+4)]
-        }
-        
-        for (let move of moves) {
-            if (move >= 0 && move <= 15){
-                validmoves.push(move)
-            }           
-        }
-       return validmoves
     }
 
     swaptiles(tile1, tile2){
@@ -87,7 +67,7 @@ function Tile(props) {
       if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves, this.state.maxmoves))){
         return;
       }
-      var moves = this.getmoves()
+      var moves = getmoves(this.getemptytile())
       var IsTileValid = moves.includes(i)
       var movenumber = this.state.numbermoves + 1
       if (IsTileValid){
@@ -121,7 +101,7 @@ function Tile(props) {
 
     NewGame(){
         this.setState(
-            {tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
+            {tiles: shuffletiles(),
             numbermoves: 0,
             correct: 0
             })
@@ -220,31 +200,6 @@ function Tile(props) {
       }
   }
 
-  function shuffle(){
-    var isSolvable = false;
-    while(isSolvable === false){
-        var positions = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5)
-        var emptytilerow = 0
-        var numberofinversions = 0
-
-        var emptytileindex = positions.indexOf(null)
-        while (emptytileindex >= 0){
-            emptytilerow = emptytilerow + 1
-            emptytileindex = emptytileindex -4
-        }
-
-        var justnumbers = positions.filter(item => item !== null)
-        let number
-        for (number in justnumbers){
-            numberofinversions = numberofinversions + inversions(number,justnumbers)
-        }
-
-        if ((numberofinversions + emptytilerow) % 2 === 0){
-            isSolvable = true
-        }
-    }
-    return positions
-  }
 
   function inversions(element,list){
       var elementindex = list.indexOf(element)
@@ -257,6 +212,50 @@ function Tile(props) {
       }
       return inversions
   }
+
+function getmoves(emptytile){
+  var validmoves = []
+  var moves
+  if(emptytile%4 === 0){
+    moves = [(emptytile+1), (emptytile-4), (emptytile+4)]
+  } else if (emptytile%4 ===3){
+    moves = [(emptytile-1), (emptytile-4), (emptytile+4)]
+  } else {
+    moves = [(emptytile-1), (emptytile+1), (emptytile-4), (emptytile+4)]
+  }
+     
+  for (let move of moves) {
+    if (move >= 0 && move <= 15){
+      validmoves.push(move)
+    }           
+    }
+  return validmoves
+ }
+
+function shuffletiles(){
+  var positions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null];
+
+  let i
+  for (i=0; i < 500; i++){
+    var possiblemoves =[];
+    var emptytileindex = positions.indexOf(null);
+    possiblemoves= getmoves(emptytileindex);
+    let move = possiblemoves[Math.floor(Math.random() * possiblemoves.length)];
+    var tilevalue = positions[move];
+    positions[move] = null;
+    positions[emptytileindex] = tilevalue;
+  }
+  return positions;
+}
+
+
+
+
+
+
+
+
+
 
   // ========================================
   

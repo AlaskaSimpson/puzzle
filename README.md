@@ -5,7 +5,7 @@ A take on the traditional 15 tile puzzle. Consiting of 15 numbered tiles to arra
 
 ## Usage
 
-
+Click [Here](http://AlaskaSimpson.github.io/puzzle) to play the game.
 
 ## About
 

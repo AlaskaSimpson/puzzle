@@ -52,15 +52,6 @@ body {
   }
 
   
-@media only screen and (max-width: 600px){
-  .info-box{
-    display:none;
-  }
-  .game-info{
-    display:none;
-  }
-}
-  
   .board-row:after {
     clear: both;
     content: "";
@@ -107,6 +98,20 @@ body {
     background: #fff;
     border: 0px solid rgb(36, 35, 35);
   }
+
+    
+@media only screen and (max-width: 600px){
+  .info-box{
+    display:none;
+  }
+  .game-info{
+    display:none;
+  }
+  .game-board{
+    width: 100%;
+    margin: auto;
+  }
+}
   
   .tile {
     background: #fff;

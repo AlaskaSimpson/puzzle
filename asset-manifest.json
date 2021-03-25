@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/puzzle/static/css/main.036ab1ed.chunk.css",
+    "main.js": "/puzzle/static/js/main.1f46ecb6.chunk.js",
+    "main.js.map": "/puzzle/static/js/main.1f46ecb6.chunk.js.map",
+    "runtime-main.js": "/puzzle/static/js/runtime-main.75e505df.js",
+    "runtime-main.js.map": "/puzzle/static/js/runtime-main.75e505df.js.map",
+    "static/js/2.26c94aa9.chunk.js": "/puzzle/static/js/2.26c94aa9.chunk.js",
+    "static/js/2.26c94aa9.chunk.js.map": "/puzzle/static/js/2.26c94aa9.chunk.js.map",
+    "index.html": "/puzzle/index.html",
+    "static/css/main.036ab1ed.chunk.css.map": "/puzzle/static/css/main.036ab1ed.chunk.css.map",
+    "static/js/2.26c94aa9.chunk.js.LICENSE.txt": "/puzzle/static/js/2.26c94aa9.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/puzzle/static/media/9.453649bc.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.75e505df.js",
+    "static/js/2.26c94aa9.chunk.js",
+    "static/css/main.036ab1ed.chunk.css",
+    "static/js/main.1f46ecb6.chunk.js"
+  ]
+}

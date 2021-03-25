@@ -40,26 +40,6 @@ function Tile(props) {
         return emptytile
     }
 
-    getmoves(){
-       var emptytile = this.getemptytile()
-       var validmoves = []
-       var moves
-        if(emptytile%4 === 0){
-            moves = [(emptytile+1), (emptytile-4), (emptytile+4)]
-        } else if (emptytile%4 ===3){
-            moves = [(emptytile-1), (emptytile-4), (emptytile+4)]
-        } else {
-            moves = [(emptytile-1), (emptytile+1), (emptytile-4), (emptytile+4)]
-        }
-        
-        for (let move of moves) {
-            if (move >= 0 && move <= 15){
-                validmoves.push(move)
-            }           
-        }
-       return validmoves
-    }
-
     swaptiles(tile1, tile2){
       var values = this.state.tiles.slice();
       var tile1value = values[tile1]
@@ -87,7 +67,7 @@ function Tile(props) {
       if (gameWon(this.state.correct) || !(movesRemaing(this.state.numbermoves, this.state.maxmoves))){
         return;
       }
-      var moves = this.getmoves()
+      var moves = getmoves(this.getemptytile())
       var IsTileValid = moves.includes(i)
       var movenumber = this.state.numbermoves + 1
       if (IsTileValid){

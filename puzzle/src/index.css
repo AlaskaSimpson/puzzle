@@ -55,9 +55,11 @@ body {
 @media only screen and (max-width: 600px){
   .info-box{
     visibility: hidden;
+    width: 0px;
   }
   .game-info{
     visibility: hidden;
+    width: 0px;
   }
 }
   

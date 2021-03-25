@@ -83,6 +83,8 @@ body {
     margin-top: 40px;
     display: table;
     border: 5px solid rgb(4, 0, 255);
+    width: 296px;
+    height:296px;
   }
   
   .status {

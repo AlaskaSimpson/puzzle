@@ -201,17 +201,6 @@ function Tile(props) {
   }
 
 
-  function inversions(element,list){
-      var elementindex = list.indexOf(element)
-      var inversions = 0
-      let index
-      for (index=(elementindex+1); index < list.length; index++){
-        if (element > list[index]){
-            inversions = inversions + 1
-        }
-      }
-      return inversions
-  }
 
 function getmoves(emptytile){
   var validmoves = []

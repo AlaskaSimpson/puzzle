@@ -15,32 +15,7 @@ body {
     font-weight: bold;
   }
 
-  .game-info{
-    width: 100%;
-    margin: auto;
-  }
 
-  .info-box{
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 15px;
-    background: #9CECFF;
-    border: 0px solid rgb(36, 35, 35);
-    color:rgb(7, 7, 7);
-  }
-  
-  .game-board{
-    margin: auto;
-    margin-top: 30px;
-  }
-@media only screen and (max-width: 600px){
-  .info-box{
-    visibility: hidden;
-  }
-}
-
-@media only screen and (min-width: 700px){
-/* when not mobile */
   .column {
     float: left;
     margin: auto;
@@ -74,6 +49,12 @@ body {
     content: "";
     display: table;
     clear:both;
+  }
+
+  
+@media only screen and (max-width: 600px){
+  .info-box{
+    visibility: hidden;
   }
 }
   

@@ -16,7 +16,7 @@ function Tile(props) {
     constructor(props){
         super(props);
         this.state = {
-            tiles: shuffle([null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]),
+            tiles: shuffletiles(),
             numbermoves: 0,
             maxmoves: 300,
             correct: 0
@@ -281,7 +281,7 @@ function shuffletiles(){
   var positions = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,null];
 
   let i
-  for (i=0; i < 300; i++){
+  for (i=0; i < 500; i++){
     var possiblemoves =[];
     var emptytileindex = positions.indexOf(null);
     possiblemoves= getmoves(emptytileindex);

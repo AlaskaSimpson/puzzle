@@ -220,31 +220,6 @@ function Tile(props) {
       }
   }
 
-  function shuffle(){
-    var isSolvable = false;
-    while(isSolvable === false){
-        var positions = [null, 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].sort(() => Math.random() -0.5)
-        var emptytilerow = 0
-        var numberofinversions = 0
-
-        var emptytileindex = positions.indexOf(null)
-        while (emptytileindex >= 0){
-            emptytilerow = emptytilerow + 1
-            emptytileindex = emptytileindex -4
-        }
-
-        var justnumbers = positions.filter(item => item !== null)
-        let number
-        for (number in justnumbers){
-            numberofinversions = numberofinversions + inversions(number,justnumbers)
-        }
-
-        if ((numberofinversions + emptytilerow) % 2 === 0){
-            isSolvable = true
-        }
-    }
-    return positions
-  }
 
   function inversions(element,list){
       var elementindex = list.indexOf(element)

@@ -108,7 +108,7 @@ body {
     display:none;
   }
   .game-board{
-    width: 100%;
+    width: auto;
     margin: auto;
   }
 }
